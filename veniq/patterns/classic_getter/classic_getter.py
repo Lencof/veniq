@@ -2,13 +2,14 @@ from typing import List
 from veniq.ast_framework import ASTNodeType, AST
 from veniq.ast_framework.ast_node import ASTNode
 
-
+# create class ClassicGetter:
 class ClassicGetter:
     """
     The method's name starts with get. Return statement is the only statement,
     excepting asserts.
     """
 
+    # create def _check_body_nodes
     def _check_body_nodes(self, check_setter_body: List[ASTNode]) -> bool:
         """
         Check whether nodes are agree with the following types
@@ -26,6 +27,7 @@ class ClassicGetter:
 
         return False
 
+    # create def value
     def value(self, ast: AST) -> List[int]:
         lines: List[int] = []
         for node in ast.get_proxy_nodes(ASTNodeType.METHOD_DECLARATION):
