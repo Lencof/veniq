@@ -1,5 +1,6 @@
 from setuptools import setup, find_packages
 import veniq
+import os
 
 setup(
     name='veniq',
