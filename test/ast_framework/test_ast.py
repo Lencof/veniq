@@ -1,12 +1,14 @@
-from unittest import TestCase, skip
-from pathlib import Path
+from unittest import TestCase, skip # use TestCase and skip 
+from pathlib import Path # use Path
 from itertools import zip_longest
 
 from veniq.utils.ast_builder import build_ast
 from veniq.ast_framework import AST, ASTNodeType
 from veniq.ast_framework.ast import MemberReferenceParams, MethodInvocationParams
+import os # use os
+import sys # use sys
 
-
+# create class ASTTestSuite(TestCase):
 class ASTTestSuite(TestCase):
     def test_parsing(self):
         ast = self._build_ast("SimpleClass.java")
@@ -14,6 +16,7 @@ class ASTTestSuite(TestCase):
         self.assertEqual(actual_node_types,
                          ASTTestSuite._java_simple_class_preordered)
 
+    # create def test_subtrees_selection(self):    
     def test_subtrees_selection(self):
         ast = self._build_ast("SimpleClass.java")
         subtrees = ast.get_subtrees(ASTNodeType.BASIC_TYPE)
@@ -23,6 +26,7 @@ class ASTTestSuite(TestCase):
                 self.assertEqual([node.node_index for node in actual_subtree],
                                  expected_subtree)
 
+    # create def test_complex_fields(self):            
     def test_complex_fields(self):
         ast = self._build_ast('StaticConstructor.java')
         class_declaration = next((declaration for declaration in ast.get_root().types if
@@ -48,6 +52,7 @@ class ASTTestSuite(TestCase):
                                                  ASTTestSuite._expected_method_invocation_params):
             self.assertEqual(ast.get_method_invocation_params(node), expected_params)
 
+    # create def _build_ast(self, filename: str):        
     def _build_ast(self, filename: str):
         javalang_ast = build_ast(str(Path(__file__).parent.absolute() / filename))
         return AST.build_from_javalang(javalang_ast)
