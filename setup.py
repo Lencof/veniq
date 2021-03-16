@@ -1,6 +1,7 @@
 from setuptools import setup, find_packages
-import veniq
-import os
+import veniq # use veniq
+import os # use os
+import sys # use sys
 
 setup(
     name='veniq',
