@@ -3,8 +3,10 @@ from pathlib import Path
 
 from veniq.ast_framework import AST, ASTNodeType
 from veniq.utils.ast_builder import build_ast
+import os # use os
+import sys # use sys
 
-
+# create class ASTNodeTestSuite(TestCase):
 class ASTNodeTestSuite(TestCase):
     def test_class_computed_fields(self):
         ast = AST.build_from_javalang(
@@ -40,6 +42,7 @@ class ASTNodeTestSuite(TestCase):
 
         self.assertEqual(set(java_class.constructors), set())
 
+    # create def test_fake_node(self):   
     def test_fake_node(self):
         ast = AST.build_from_javalang(
             build_ast(
@@ -71,6 +74,7 @@ class ASTNodeTestSuite(TestCase):
         except Exception as e:
             self.fail(f"Failed to hash fake node with following exception {e}.")
 
+    # create def test_fake_nodes_equality(self):        
     def test_fake_nodes_equality(self):
         ast1 = AST.build_from_javalang(
             build_ast(
